@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/eventEditScroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ocean_background"
+    tools:context="org.example.app.ui.events.EventEditFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:background="@color/ocean_surface">
+
+        <EditText
+            android:id="@+id/inputTitle"
+            style="@style/Widget.Ocean.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/title" />
+
+        <EditText
+            android:id="@+id/inputDescription"
+            style="@style/Widget.Ocean.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/description"
+            android:minLines="3"
+            android:gravity="top"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/inputStart"
+            style="@style/Widget.Ocean.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/start_time"
+            android:inputType="datetime" />
+
+        <EditText
+            android:id="@+id/inputEnd"
+            style="@style/Widget.Ocean.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/end_time"
+            android:inputType="datetime" />
+
+        <CheckBox
+            android:id="@+id/checkAllDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all_day" />
+
+        <EditText
+            android:id="@+id/inputLocation"
+            style="@style/Widget.Ocean.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/location" />
+
+        <EditText
+            android:id="@+id/inputColor"
+            style="@style/Widget.Ocean.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/color_tag" />
+
+        <Button
+            android:id="@+id/btnSave"
+            style="@style/Widget.Ocean.Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save" />
+    </LinearLayout>
+</ScrollView>
