@@ -1,21 +1,40 @@
-# declarative-samples-android-app
-A sample Android application written in the Declarative Gradle DSL, using the prototype Declarative Gradle `androidApplication` Software Type defined in the `org.gradle.experimental.android-ecosystem` ecosystem plugin.
+# Android Calendar Manager - Android Frontend
 
-## Building and Running
+This is a multi-module Android project (Kotlin, no Compose) consisting of:
+- app: Application module (namespace `org.example.app`)
+- list: Simple Kotlin/Android library
+- utilities: Library that depends on `:list`
 
-This sample shows the definition of a multiproject Android application implemented using Kotlin 2.0.21 source code.
-The project is the result of reproducing the project produced by the `gradle init` command in Gradle 8.9 as an Android project.
+The project uses the Kotlin DSL (build.gradle.kts) with Android Gradle Plugin 8.5.2 and Kotlin 1.9.24.
+A standard Gradle wrapper is provided.
 
-To build the project without running, use:
+## Build
 
-```shell
-  ./gradlew build
+From the `android_frontend` directory:
+
+```sh
+./gradlew :app:assembleDebug
 ```
 
-To run the application, first install it on a connected Android device using:
+Or build everything:
 
-```shell
-  :app:installDebug
+```sh
+./gradlew build
 ```
 
-Then search for "Sample Declarative Gradle Android App" and launch app to see a hello world message.
+## Run
+
+Install and run on a connected/emulator device:
+
+```sh
+./gradlew :app:installDebug
+```
+
+The app name is "Calendar Manager". It uses standard Android Views (no Compose).
+
+## Notes
+
+- Minimum SDK 24, target/compile SDK 34.
+- ViewBinding is enabled in the app module.
+- Networking uses Retrofit 2.9.0 with Moshi and OkHttp 4.12.0.
+- The backend base URL defaults to `http://10.0.2.2:3001/` for Android emulator; adjust in `app/src/main/res/values/strings.xml` as needed.

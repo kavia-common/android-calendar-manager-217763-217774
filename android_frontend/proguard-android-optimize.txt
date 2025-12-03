@@ -1,0 +1,2 @@
+# Placeholder to satisfy getDefaultProguardFile reference in environments without the Android SDK default file.
+# In a real Android SDK environment, AGP resolves this from the SDK. This placeholder avoids CI warnings.

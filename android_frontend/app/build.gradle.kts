@@ -36,6 +36,11 @@ android {
         unitTests.isReturnDefaultValues = true
     }
 
+    // Enable view binding for safer view lookups (still compatible with non-Compose)
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -47,24 +52,29 @@ android {
 
 tasks.withType<Test>().configureEach {
     // PUBLIC_INTERFACE
-    // Disable failing the build if no tests are discovered to unblock CI.
-    this.failOnNoTests = false
+    // Configure unit tests; Gradle/AGP does not support failOnNoTests for Android unit tests.
+    // Keeping block for future per-test configuration if needed.
 }
 
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.24"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.24")
 
+    implementation(project(":utilities"))
+
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.fragment:fragment-ktx:1.8.2")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.viewpager2:viewpager2:1.1.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+    implementation("androidx.fragment:fragment-ktx:1.8.4")
 
-    // Networking
-    implementation("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    // Networking (Moshi converter as used in code)
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     // Unit testing
